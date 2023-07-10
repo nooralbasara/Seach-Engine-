@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Result of Your Search:</h1>
+<ul>
+    {% for features in object_list %}
+      <li>
+        {{ filename.name }}, {{ features.state }}
+      </li>
+    {% endfor %}
+  </ul>
+
+
+<!-- <p>Welcome to my first Django project!</p> 
+
+</body>
+</html> -->
+
+
