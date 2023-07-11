@@ -1,6 +1,6 @@
 import os
 import PyPDF2
-#import docx 
+import docx 
 from whoosh.fields import SchemaClass, TEXT, ID
 from whoosh.index import create_in, open_dir 
 
@@ -8,7 +8,7 @@ from whoosh.index import create_in, open_dir
 # create Schema class for the file name and text 
 class IndexFile(SchemaClass):
     file_name = ID(stored=True)
-    content = TEXT()
+    content = TEXT(stored=True)
 
 
 # function to extract from PDF file    
@@ -27,14 +27,14 @@ def ExtractPDFFile(i):
      return pdf_text
 
 # Function to extract from Docx file
-# def ExtractDocxFile(j):
-#     docxfile = docx.Document()
-#     docx_text = ""
-#     for para in docxfile.paragraphs:
-#         docx_text += para.text
-#     # if info_type in docx_text:
+def ExtractDocxFile(j):
+    docxfile = docx.Document(j)
+    docx_text = ""
+    for para in docxfile.paragraphs:
+        docx_text += para.text
+    # if info_type in docx_text:
 #     #         print("The information is present in example.docx")
-#     return docx_text
+    return docx_text
 
 
 
@@ -63,11 +63,11 @@ writer = ix.writer()
 
 for i in pdf_files:
    ExtractPDFFile(i)
-   writer.add_document(file_name= i, content= ExtractPDFFile(i))
+   writer.add_document(file_name=i, content=ExtractPDFFile(i))
 
 
-# for j in docx_files:
-#       ExtractDocxFile(j)
-#       writer.add_document(file_name= j, content=    ExtractDocxFile(j))
+for j in docx_files:
+      ExtractDocxFile(j)
+      writer.add_document(file_name=j, content=ExtractDocxFile(j))
 
 writer.commit()

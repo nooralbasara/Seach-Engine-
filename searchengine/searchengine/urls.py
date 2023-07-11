@@ -18,8 +18,8 @@ from django.contrib import admin
 from django.urls import path,include
 
 urlpatterns = [
-    path('search/',include("homepage.urls")),
-    path('result/', include('result.html')),
+    path('search/',include("searching_engine.urls")),
+    path('admin/', admin.site.urls),
 ]
 
 # from django.conf.urls import patterns, include, url

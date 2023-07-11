@@ -3,11 +3,14 @@
 <body>
 
 <h1>Result of Your Search:</h1>
+<p>search tearm : {{ search_tearm }}</p>
+<p>number of hits : {{ search_result.hits_count }}</p>
 <ul>
-    {% for features in object_list %}
+    {% for file in search_result.result %}
       <li>
-        {{ filename.name }}, {{ features.state }}
+        {{ file.file_name }}
       </li>
+      {{ file.content | safe }}
     {% endfor %}
   </ul>
 

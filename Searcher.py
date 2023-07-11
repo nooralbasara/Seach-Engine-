@@ -8,7 +8,7 @@ ix = index.open_dir("index")
 
 with ix.searcher() as searcher:
     # query = input("Enter your search query: ")
-    query = input("Enter your search query: ")
+    query = 'noor'
     qp = QueryParser("content", ix.schema)
     q = qp.parse(query)
     results = searcher.search(q)

@@ -10,7 +10,7 @@
 
 from onedrivedownloader import download
 
-url = 'https://sbmjed-my.sharepoint.com/personal/e004965_sbm_com_sa/_layouts/15/onedrive.aspx?ga=1&id=%2Fpersonal%2Fe004965%5Fsbm%5Fcom%5Fsa%2FDocuments%2FDesktop%2FAramco%2FTechnical%20Consultant%20%E2%80%93%20ABAP%20%20Fiori'
+url = 'https://drive.google.com/drive/folders/1GxY9CPwZ0tzJIMcBykCquZwKltYWN53n'
 
 #download(url: str, file_name: str, unzip=False, unzip_path: str = None, force_download=False, force_unzip=False, clean=False)
 
