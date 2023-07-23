@@ -10,9 +10,9 @@
 
 from onedrivedownloader import download
 
-url = 'https://drive.google.com/drive/folders/1GxY9CPwZ0tzJIMcBykCquZwKltYWN53n'
+url = 'https://drive.google.com/file/d/1_otEiH0FAqfyhLBTNmjBGVBsczB15Adn?download=1'
 
 #download(url: str, file_name: str, unzip=False, unzip_path: str = None, force_download=False, force_unzip=False, clean=False)
 
-download (url, filename = "CVs//", unzip=True, unzip_path="./data")
+download (url,force_download=False)
 

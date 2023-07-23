@@ -1,18 +1,40 @@
 <!DOCTYPE html>
 <html>
-<body>
 
-<h1>Result of Your Search:</h1>
-<p>search tearm : {{ search_tearm }}</p>
-<p>number of hits : {{ search_result.hits_count }}</p>
-<ul>
+<head>
+  <title>Search Result</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <form action="{% url 'search_result' %}" class="form-inline" method="get">
+    <div class="form-group mb-8">
+         <h1>{% if type %}{{ type.name }}{% else %} Enter your search query {% endif %}</h1>
+    </div>
+    <div class="form-group mx-sm-3 mb-2">
+     <label for="" class="sr-only">search</label>
+     <input name="q" type="text" class="form-control"  placeholder="Search...">
+     </div>
+     <button type="submit" class="btn btn-success btn-lg mb-2">Search</button>
+</form>
+
+<b>Result of Your Search:</b>
+
+<p style="margin-bottom: 5px;">number of hits : {{ search_result.hits_count }} out of {{ search_result.index_doc_count }}</p>
+<div id="search-result">
     {% for file in search_result.result %}
-      <li>
+      <div id="result-{{ forloop.counter }}" style="margin: 5px;  padding: 5px;">
+        <a href="download/{{ file.file_name }}" target="_blank">
         {{ file.file_name }}
-      </li>
-      {{ file.content | safe }}
+        </a>
+        <p>{{ file.content | safe }}</p>
+      <p style="margin-bottom: 5px;"><b>Contact:</b> {{ file.phone }}</p>
+      <p style="margin-bottom: 5px;"><b>email:</b> {{ file.email }}</p>
+      </div>
     {% endfor %}
-  </ul>
+    </div>
+  
 
 
 <!-- <p>Welcome to my first Django project!</p> 
